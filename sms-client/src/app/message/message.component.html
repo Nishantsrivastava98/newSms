@@ -1,0 +1,7 @@
+<div class="slds-notify_container">
+    <div *ngFor = "let toast of messages">
+            <ngl-toast [iconName]="'utility:' + toast.variant" *ngIf = "toast.showToast" [variant] = "toast.variant" (close) = "toast.showToast = false"  [duration] = "toast.duration">
+                <h2 class="slds-text-heading_small">{{toast.message}}</h2>
+            </ngl-toast>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<!-- <div class="container">
+    <h1>Hero Form</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo">
+      </div>
+
+      <div class="form-group">
+        <label for="power">Hero Power</label>
+        <select class="form-control" id="power" required>
+          <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" >Submit</button>
+
+    </form>
+</div>
+
+<div class="container">
+  <h1>Hero Form</h1>
+  <form #studentForm = "ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="student.name" required name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="alterEgo">Age</label>
+      <input type="text" class="form-control" [(ngModel)]="student.age" id="alterEgo" name="age">
+    </div>
+    
+    <div class="form-group">
+      <label for="power">Email</label>
+      <input type="text" class="form-control" [(ngModel)]="student.email" id="alterEgo" name="email">
+    </div>
+
+    <button type="submit" class="btn btn-success" >Submit</button>
+
+  </form>
+  <button type="button" class="btn btn-success" (click) = "checkValue(studentForm)" >check</button>
+
+  {{ studentForm.value | json }}
+  
+<br>
+  {{ student| json }}
+  <ngb-progressbar [showValue]="true" type="info" [value]="50"></ngb-progressbar>
+</div> -->
