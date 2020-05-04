@@ -66,7 +66,7 @@ export class StudentInsertComponent implements OnInit {
       this.studentService.updateStudents(this.student.Id,this.student)
         .subscribe(res => {
           this.messageService.showToast('Student Updated Successfully', 'success');
-          this.router.navigateByUrl(`/details/${this.student.Id}`);
+          this.router.navigateByUrl(`/library/details/${this.student.Id}`);
           console.log('Response recieved: ', res);
           console.log(this.student.Id)
         });
@@ -75,7 +75,7 @@ export class StudentInsertComponent implements OnInit {
       this.studentService.addStudents(this.student)
         .subscribe(res => {
           this.messageService.showToast('Student Added Successfully', 'success');
-          this.router.navigateByUrl(`/details/${res.rows[1][0]["LAST_INSERT_ID()"]}`);
+          this.router.navigateByUrl(`/library/details/${res.rows[1][0]["LAST_INSERT_ID()"]}`);
 
         });
 

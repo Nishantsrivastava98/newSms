@@ -14,22 +14,36 @@ export class StudentService {
   getStudents(): Observable<any> {
     return this.http.get(this.studentsUrl)
   }
+
   deleteStudents(id : number) : Observable<any>{
    
     const url = `${this.studentsUrl}/delete/${id}`;
     return this.http.delete(url)
   }
+
   addStudents(student) : Observable<any>{
     const url =  `${this.studentsUrl}/insert`;
     return this.http.post(url,student,this.httpOptions)
   }
+
   studentDetails(id : number) : Observable<any>{
     const url = `${this.studentsUrl}/details/${id}`;
     return this.http.get(url)
   }
+
+  studentBookDetails(id) : Observable<any>{
+    const url = `${this.studentsUrl}/books/${id}`;
+    return this.http.get(url)
+  }
+  returnBook(id,ReturnDate) : Observable<any>{
+    const url = `${this.studentsUrl}/return/${id}`;
+    return this.http.put(url,ReturnDate,this.httpOptions)
+  }
+
   updateStudents(id,student) : Observable <any>{
     const url = `${this.studentsUrl}/update/${id}`;
     return this.http.put(url,student,  this.httpOptions)
   }
+  
   constructor(private http : HttpClient) { }
 }

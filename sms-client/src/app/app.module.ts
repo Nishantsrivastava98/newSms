@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {NglModule,NGL_ICON_CONFIG, NglIconConfig} from 'ng-lightning';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,10 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
 import { StudentInsertComponent } from './student-insert/student-insert.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { MessageComponent } from './message/message.component';
+import { LibraryAdministrationComponent } from './library-administration/library-administration.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
+import { BookInsertComponent } from './book-insert/book-insert.component';
+import { SearchBookComponent } from './search-book/search-book.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +23,18 @@ import { MessageComponent } from './message/message.component';
     HeroFormComponent,
     StudentInsertComponent,
     StudentDetailsComponent,
-    MessageComponent
+    MessageComponent,
+  LibraryAdministrationComponent,
+  BookDetailsComponent,
+  BookInsertComponent,
+  SearchBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NglModule
     
   ],

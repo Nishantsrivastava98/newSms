@@ -17,7 +17,7 @@
 		  </h2>
 		</div>
 		<div class="slds-no-flex">
-		  <button class="slds-button slds-button_neutral" [routerLink]= "['/add']">New</button>
+		  <button class="slds-button slds-button_neutral" [routerLink]= "['/student/add']">New</button>
 		</div>
 	  </header>
 	</div>
@@ -35,7 +35,7 @@
 				<ng-template nglDatatableCell let-row='row' >
 					<a type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left"routerLink= '/update/{{row.Id}}'>Edit</a>
 					<button type="button" nglButton variant="destructive" iconName="action:delete" iconPosition="right" (click)="deleteStudents(row.Id)">Delete</button>
-					<a type="button" nglButton iconName="action:description" routerLink= '/details/{{row.Id}}'>Details</a>
+					<a type="button" nglButton iconName="action:description" routerLink= '/student/details/{{row.Id}}'>Details</a>
 				</ng-template>
 			</ngl-datatable-column>
 		</table>

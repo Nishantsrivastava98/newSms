@@ -84,11 +84,37 @@ router.delete('/delete/:id',function(req, res, next){
 		}
 	})
 })
-router.get('/last/:id',function(req,res){
-	var q = `SELECT * FROM student where Id = SELECT'${ LAST_INSERT_ID()}'` ;
-	database.query(q, function(err,rows,fields){
-		if (err) throw err;
-		res.send(rows)
+router.get('/books/:id',function(req,res,next){
+	var q  = `SELECT library.BookName,library.BookId,library.Author,librarycard.IssuedDate,librarycard.ReturnDate,librarycard.IssueId
+	FROM librarycard
+	LEFT JOIN library
+	ON librarycard.BookId = library.BookId 
+	WHERE librarycard.StudentId = '${req.params.id}';`
+	console.log(q);
+	database.query(q,function(err,rows,fields){
+		if(err){
+			Promise.resolve().then(function(){
+				throw err;
+			}).catch(next)
+		}
+		else{
+			res.send(rows);
+		}
+	})
+})
+router.put('/return/:id',function(req,res,next){
+	var q = `UPDATE librarycard SET ReturnDate = '${req.body.ReturnDate}'WHERE IssueId = '${req.params.id}';`;
+	console.log(q);
+	database.query(q,function(err,rows,fields){
+		if(err){
+			Promise.resolve().then(function(){
+				throw err;
+
+			}).catch(next)
+		}
+		else{
+			res.send(rows);
+		}
 	})
 })
 

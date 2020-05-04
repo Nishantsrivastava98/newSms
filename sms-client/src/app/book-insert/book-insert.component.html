@@ -1,0 +1,56 @@
+<article class="slds-card " style="max-width: 400px; margin:auto; margin-top: 50px;" >
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate" *ngIf="isEdit">
+        <div  class="slds-media__figure">
+          <ngl-icon  iconName="action:edit" alternativeText="edit" size = "xx-small"></ngl-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+              <span>Edit</span>
+          </h2>
+        </div>
+      </header>
+      <header class="slds-media slds-media_center slds-has-flexi-truncate" *ngIf="!isEdit">
+        <div  class="slds-media__figure">
+          <ngl-icon  iconName="action:edit" alternativeText="edit" size = "xx-small"></ngl-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+              <span>Add</span>
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body slds-p-around_small">
+     <form #bookForm = "ngForm"> 
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Book Name</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="text-input-id-1" placeholder="Enter Book name" required="" class="slds-input" [(ngModel)]="books.BookName" name="BookName"/>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Author</label>
+            <div class="slds-form-element__control">
+              <input type="text" id="text-input-id-1" placeholder="Enter Name Of Author" required="" class="slds-input" [(ngModel)]="books.Author" name="Author"/>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="text-input-id-1">
+              <abbr class="slds-required" title="required">* </abbr>Number Of Books</label>
+            <div class="slds-form-element__control">
+              <input type="number" id="text-input-id-1" placeholder="Number Of Books" required="" class="slds-input" [(ngModel)]="books.NumberOfBooks" name="NumberOfBooks"/>
+            </div>
+        </div>
+
+        <div class="slds-text-align_center">
+            <button *ngIf="isEdit" type="button" nglButton variant="success" nglButton (click)="showTopToast = true" (click)="Books()" class="slds-m-top_medium" >Update</button>
+            <button *ngIf="!isEdit" type="button" nglButton variant="success" nglButton (click)="showTopToast = true" (click)="Books()" class="slds-m-top_medium " >Add</button>
+        
+          </div>
+
+    </form>
+</div>
+</article>

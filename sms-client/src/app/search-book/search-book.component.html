@@ -1,0 +1,9 @@
+<ngl-combobox label="Search for a wikipedia page" [options]="searchedBooks | async" [open]="open" (openChange)="openChange($event)" (selectionChange)="fireShowBook($event)" [(selection)]="selectedBookId" [loading]="Loading" variant="lookup">
+    <input nglCombobox type="text" placeholder="Please type something..." [formControl]="inputCtrl">
+</ngl-combobox>
+
+<div class="slds-m-top_x-small" *ngIf="selectedBookId" >
+  You selected:
+  <strong>{{ selectedBookId }}</strong>
+  
+</div>
