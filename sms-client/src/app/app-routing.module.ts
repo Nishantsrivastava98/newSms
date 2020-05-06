@@ -6,6 +6,8 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { LibraryAdministrationComponent } from './library-administration/library-administration.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookInsertComponent } from './book-insert/book-insert.component';
+import { ClassroomComponent } from './classroom/classroom.component';
+import{ ClassroomStudentsComponent } from './classroom-students/classroom-students.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path : 'library',component:LibraryAdministrationComponent},
   {path : 'library/details/:id',component:BookDetailsComponent},
   {path :'library/update/:id',component:BookInsertComponent},
-  {path :'library/add',component:BookInsertComponent}
+  {path :'library/add',component:BookInsertComponent},
+  {path : 'classroom',component:ClassroomComponent},
+  {path : 'classroom/student/:id',component:ClassroomStudentsComponent}
 
 ];
 

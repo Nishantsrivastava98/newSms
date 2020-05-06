@@ -15,6 +15,8 @@ import { LibraryAdministrationComponent } from './library-administration/library
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookInsertComponent } from './book-insert/book-insert.component';
 import { SearchBookComponent } from './search-book/search-book.component';
+import { ClassroomComponent } from './classroom/classroom.component';
+import { ClassroomStudentsComponent } from './classroom-students/classroom-students.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SearchBookComponent } from './search-book/search-book.component';
   LibraryAdministrationComponent,
   BookDetailsComponent,
   BookInsertComponent,
-  SearchBookComponent
+  SearchBookComponent,
+  ClassroomComponent,
+  ClassroomStudentsComponent
   ],
   imports: [
     BrowserModule,

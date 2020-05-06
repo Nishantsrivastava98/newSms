@@ -1,0 +1,42 @@
+<div *ngFor="let item of classroomStudent">
+    <article class="slds-card slds-m-around_medium slds-card_boundary">
+        <div class="slds-card__header ">
+            <div class="slds-grid slds-wrap slds-p-around_small">
+                <div class=" slds-col slds-size_1-of-12 ">
+                    <b>
+                        {{item.Id}}
+                    </b>
+                </div>
+                <div class=" slds-col slds-size_2-of-12 ">
+                    <b>
+                        {{item.Name}}
+                    </b>
+                </div>
+                <div class=" slds-col slds-size_1-of-12 ">
+                    <b>
+                        {{item.RollNo}}
+                    </b>
+                </div>
+                <div class=" slds-col slds-size_2-of-12 ">
+                    <b>
+                        {{item.CourseId}}
+                    </b>
+                </div>
+                <div class=" slds-col slds-size_2-of-12 ">
+                    <b>
+                        {{item.Year}}
+                    </b>
+                </div>
+                <div class=" slds-col slds-size_2-of-12 ">
+                    <b>
+                        {{item.Semester}}
+                    </b>
+                </div>
+                <div class=" slds-col slds-size_2-of-12 ">
+                    <b>
+                        {{item.DateOfAdmission}}
+                    </b>
+                </div>
+            </div>
+        </div>
+    </article>
