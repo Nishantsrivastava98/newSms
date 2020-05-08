@@ -29,7 +29,8 @@ export class StudentInsertComponent implements OnInit {
   student = {
     "Id": '',
     "Name": "",
-    "Department": "",
+    "CourseName":"",
+    "CourseId": "",
     "RollNo": null,
     "Year": null,
     "Semester": null,
@@ -84,4 +85,33 @@ export class StudentInsertComponent implements OnInit {
 
     
   }
+  optionsCourseName = [
+
+          {"label":'CSE', "value":'1'},
+
+          {"label":'ME', "value":'2'}
+  ];
+  selectionCourse: string = null;
+
+  openCourse = false;
+  optionsYear = [
+
+    {"label":'First Year', "value":'1'},
+
+    {"label":'Second Year', "value":'2'}
+];
+selectionYear: string = null;
+
+openYear = false;
+optionsSemester = [
+
+  {"label":'First Semester', "value":'1'},
+
+  {"label":'Second Semester', "value":'2'}
+];
+selectionSemester: string = null;
+
+openSemester = false;
+
+  
 }

@@ -33,11 +33,12 @@ router.get('/details/:id',function(req,res, next){
 	})
 })
 router.post('/insert',function(req, res, next){
-	var q = `INSERT INTO student(Name,Department,RollNo,Year,Semester,DateOfAdmission) 
-			VALUES('${req.body.Name}','${req.body.Department}','${req.body.RollNo}',
+
+	var q = `INSERT INTO student(Name,CourseName,CourseId,RollNo,Year,Semester,DateOfAdmission) 
+			VALUES('${req.body.Name}','${req.body.CourseName}','${q2}','${req.body.RollNo}',
 			'${req.body.Year}','${req.body.Semester}','${req.body.DateOfAdmission}');
 			SELECT LAST_INSERT_ID();`
-			console.log('===>>',q);
+			console.log('===>>',q1);
 	database.query(q, function(err,rows,fields){
 		if (err) {
 			Promise.resolve().then(function () {
@@ -49,7 +50,7 @@ router.post('/insert',function(req, res, next){
 		}
 		
 	});
-});
+ });
 router.put('/update/:id',function(req,res, next){
 	console.log(JSON.stringify(req.body));
 	var q = `UPDATE student SET Name = '${req.body.Name}', 

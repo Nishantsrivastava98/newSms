@@ -17,6 +17,7 @@ import { BookInsertComponent } from './book-insert/book-insert.component';
 import { SearchBookComponent } from './search-book/search-book.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomStudentsComponent } from './classroom-students/classroom-students.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ClassroomStudentsComponent } from './classroom-students/classroom-stude
   BookInsertComponent,
   SearchBookComponent,
   ClassroomComponent,
-  ClassroomStudentsComponent
+  ClassroomStudentsComponent,
+  AttendanceComponent
   ],
   imports: [
     BrowserModule,

@@ -39,55 +39,28 @@
     </div>
   </div>
   <div class="slds-form-element">
-    <label class="slds-form-element__label" for="text-input-id-1">
-      <abbr class="slds-required" title="required">* </abbr>Department</label>
+  
     <div class="slds-form-element__control">
-      <div class="slds-select_container">
-        <select class="slds-select" id="select-01" [(ngModel)]="student.Department" name="Department">
-          <option value="">Please select</option>
-          <option>ME</option>
-          <option>CSE</option>
-          <option>IT</option>
-          <option>ECE</option>
-          <option>EE</option>
-          <option>CE</option>
-        </select>
-      </div>
+      <ngl-combobox label="Course" [options]="optionsCourseName" [(open)]="openCourse" [(selection)]="student.CourseName">
+        <input nglCombobox placeholder="Select an Option">
+      </ngl-combobox>
     </div>
   </div>
   <div class="slds-form-element">
-    <label class="slds-form-element__label" for="text-input-id-1">
-      <abbr class="slds-required" title="required">* </abbr>Year</label>
+    
     <div class="slds-form-element__control">
-      <div class="slds-select_container">
-        <select class="slds-select" id="select-01" [(ngModel)]="student.Year" name="Year">
-          <option value="">Please select</option>
-          <option>First Year</option>
-          <option>Second Year</option>
-          <option>Third Year</option>
-          <option>Final Year</option>
-
-        </select>
-      </div>
+      <ngl-combobox label="Year" [options]="optionsYear" [(open)]="openYear" [(selection)]="student.Year">
+        <input nglCombobox placeholder="Select an Option">
+      </ngl-combobox>
+  
     </div>
   </div>
   <div class="slds-form-element">
-    <label class="slds-form-element__label" for="text-input-id-1">
-      <abbr class="slds-required" title="required">* </abbr>Semester</label>
+    
     <div class="slds-form-element__control">
-      <div class="slds-select_container">
-        <select class="slds-select" id="select-01" [(ngModel)]="student.Semester" name="Semester">
-          <option value="">Please select</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-        </select>
-      </div>
+      <ngl-combobox required="true" label="Semester" [options]="optionsSemester" [(open)]="openSemester" [(selection)]="student.Semester">
+        <input nglCombobox placeholder="Select an Option">
+      </ngl-combobox>
     </div>
   </div>
   <div class="slds-form-element">

@@ -28,19 +28,22 @@
                 <article class="slds-card slds-m-around_medium slds-card_boundary">
                     <div class="slds-card__header ">
                         <div class="slds-grid slds-wrap slds-p-around_small">
-                            <div class=" slds-col slds-size_1-of-3 ">
+                            <div class=" slds-col slds-size_1-of-4 ">
                                 <b>
                                     {{item.CourseId}}
                                 </b>
                             </div>
-                            <div class=" slds-col slds-size_1-of-3 ">
+                            <div class=" slds-col slds-size_1-of-4 ">
                                 <b>
                                     {{item.CourseName}}
                                 </b>
                             </div>
-                            <div class=" slds-col slds-size_1-of-3 ">
+                            <div class=" slds-col slds-size_1-of-4 ">
                                 <a type="button" nglButton variant="brand" routerLink='/classroom/student/{{item.CourseId}}'>Enter Classroom</a>
                             </div>
+                            <div class=" slds-col slds-size_1-of-4 ">
+                              <a type="button" nglButton variant="brand" routerLink='/classroom/attendance/{{item.CourseId}}'>Take Attendance</a>
+                          </div>
                         </div>
                     </div>
                 </article>

@@ -8,6 +8,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookInsertComponent } from './book-insert/book-insert.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import{ ClassroomStudentsComponent } from './classroom-students/classroom-students.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path :'library/update/:id',component:BookInsertComponent},
   {path :'library/add',component:BookInsertComponent},
   {path : 'classroom',component:ClassroomComponent},
-  {path : 'classroom/student/:id',component:ClassroomStudentsComponent}
+  {path : 'classroom/student/:id',component:ClassroomStudentsComponent},
+  {path : 'classroom/attendance/:id',component:AttendanceComponent}
 
 ];
 
