@@ -12,7 +12,7 @@ router.get('/',function(req,res,next){
                 throw(err)
             }).catch(next)
         }
-        else{
+        else{ 
             res.send(rows)
         }
     })
@@ -32,4 +32,7 @@ router.get('/students/:id',function(req,res,next){
     })
 })
 
-module.exports = router;
+module.exports = router
+
+
+

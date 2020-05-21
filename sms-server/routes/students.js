@@ -19,7 +19,11 @@ router.get('/',function(req, res, next){
 	})
 })
 router.get('/details/:id',function(req,res, next){
-	var q = `SELECT * FROM student WHERE Id = '${req.params.id}'`
+	var q = `SELECT student.Name,student.RollNo,student.Year,student.Semester,student.DateofAdmission,classroom.CourseName 
+			FROM classroom
+			LEFT JOIN student
+			ON classroom.CourseId = student.CourseId 
+	 		WHERE Id = '${req.params.id}'`
 	database.query(q, function(err,rows,fields){
 		if (err) {
 			Promise.resolve().then(function () {
@@ -34,11 +38,11 @@ router.get('/details/:id',function(req,res, next){
 })
 router.post('/insert',function(req, res, next){
 
-	var q = `INSERT INTO student(Name,CourseName,CourseId,RollNo,Year,Semester,DateOfAdmission) 
-			VALUES('${req.body.Name}','${req.body.CourseName}','${q2}','${req.body.RollNo}',
+	var q = `INSERT INTO student(Name,CourseId,RollNo,Year,Semester,DateOfAdmission) 
+			VALUES('${req.body.Name}','${req.body.CourseId}','${req.body.RollNo}',
 			'${req.body.Year}','${req.body.Semester}','${req.body.DateOfAdmission}');
 			SELECT LAST_INSERT_ID();`
-			console.log('===>>',q1);
+			console.log('===>>',q);
 	database.query(q, function(err,rows,fields){
 		if (err) {
 			Promise.resolve().then(function () {
@@ -74,6 +78,7 @@ router.put('/update/:id',function(req,res, next){
 }) 
 router.delete('/delete/:id',function(req, res, next){
 	var q = `DELETE FROM student WHERE Id = '${req.params.id}'`
+	console.log(q)
 	database.query(q,function(err,rows,fields){
 		if (err) {
 			Promise.resolve().then(function () {
@@ -90,7 +95,7 @@ router.get('/books/:id',function(req,res,next){
 	FROM librarycard
 	LEFT JOIN library
 	ON librarycard.BookId = library.BookId 
-	WHERE librarycard.StudentId = '${req.params.id}';`
+	WHERE librarycard.StudentId = '${req.params.id}';s`
 	console.log(q);
 	database.query(q,function(err,rows,fields){
 		if(err){

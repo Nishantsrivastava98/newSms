@@ -33,7 +33,7 @@
 			</ngl-datatable-column>
 			<ngl-datatable-column heading="Action" aria-keyshortcuts="Id"  sortable>
 				<ng-template nglDatatableCell let-row='row' >
-					<a type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left"routerLink= '/update/{{row.Id}}'>Edit</a>
+					<a type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left"routerLink= '/student/update/{{row.Id}}'>Edit</a>
 					<button type="button" nglButton variant="destructive" iconName="action:delete" iconPosition="right" (click)="deleteStudents(row.Id)">Delete</button>
 					<a type="button" nglButton iconName="action:description" routerLink= '/student/details/{{row.Id}}'>Details</a>
 				</ng-template>
@@ -43,3 +43,14 @@
 	<footer class="slds-card__footer">
 	</footer>
 </article>
+
+
+
+<app-test></app-test>
+<app-test></app-test>
+<app-test></app-test>
+<app-test></app-test>
+<app-test></app-test>
+<app-test></app-test>
+<app-test></app-test>
+<app-test></app-test>

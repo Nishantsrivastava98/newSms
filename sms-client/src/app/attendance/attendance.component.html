@@ -1,53 +1,47 @@
-
-<div *ngFor="let item of classroomStudent">
-    <article class="slds-card slds-m-around_medium slds-card_boundary">
-        <div class="slds-card__header ">
-            <div class="slds-grid slds-wrap slds-p-around_small">
-                <div class=" slds-col slds-size_1-of-12 ">
-                    <b>
-                        {{item.Id}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_2-of-12 ">
-                    <b>
-                        {{item.Name}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_1-of-12 ">
-                    <b>
-                        {{item.RollNo}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_1-of-12 ">
-                    <b>
-                        {{item.CourseId}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_1-of-12 ">
-                    <b>
-                        {{item.Year}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_2-of-12 ">
-                    <b>
-                        {{item.Semester}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_2-of-12 ">
-                    <b>
-                        {{item.DateOfAdmission}}
-                    </b>
-                </div>
-                <div class=" slds-col slds-size_2-of-12 ">
-                    <div class="slds-col_padded">
-                        <ngl-checkbox-toggle   enabledText="Present" disabledText="Absent">
-                          <input ngl type="checkbox"   [(ngModel)]="item.Attendance" >
-                        </ngl-checkbox-toggle>
-                    </div>
-                </div>
+ <article class="slds-card slds-m-around_small">
+     <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+              <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                  <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                </svg>
+                <span class="slds-assistive-text">contact</span>
+              </span>
             </div>
-            
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                
+                  <span><b>Attendance-Register</b></span>
+                
+              </h2>
+            </div>
+            <div class="slds-no-flex">
+               
+                <ngl-datepicker-input delimiter = "-" format="little-endian" (valueChange)="classroomStudents($event)" [(ngModel)]="todayDate" dropdownAlign="right" placeholder="Select attendance date" [dateDisabled]="dateDisabled" [min]="minDate" [max]="maxDate"></ngl-datepicker-input>
+                  
+            </div>
+        </header>
         </div>
-    </article>
-</div>
-    <button type="button" nglButton variant="neutral" (click)="giveAttendance()">neutral</button>
+        <div class="slds-card__body slds-p-around_small">
+            <table class="slds-table_bordered slds-max-medium-table_stacked-horizontal" ngl-datatable [data]="classroomStudent"  [loading]="false">
+                <ngl-datatable-column heading="Roll Number" key='RollNumber' ></ngl-datatable-column>
+                <ngl-datatable-column heading="Name" key='Name' ></ngl-datatable-column>s
+                <ngl-datatable-column heading="Attendance">
+                    <ng-template nglDatatableCell let-row="row">
+                    
+                            <div class="slds-col_padded">
+                                <ngl-checkbox >
+                                  <input ngl type="checkbox"  [(ngModel)]="row.Attendance">
+                                </ngl-checkbox>
+                              </div>
+                    </ng-template>
+                </ngl-datatable-column>
+
+                
+            </table>
+    </div>
+        <footer class="slds-card__footer">
+            <button type="button" nglButton variant="neutral" (click)="giveAttendance()">Submit</button>
+        </footer>
+</article>

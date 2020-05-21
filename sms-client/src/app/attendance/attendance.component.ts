@@ -13,65 +13,67 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./attendance.component.scss']
 })
 export class AttendanceComponent implements OnInit {
-  attendance={
-    "CourseId":'',
-    "StudentId":'',
-    "Attendance":'',
-    "Date":''
-    
-  };
 
+  CourseId;
   classroomStudent;
-  
-  giveAttendance(){
-    
-    this.activatedRoute.paramMap.subscribe(params =>{
-      let CourseId = params.get('id');
-      let data = {
-        attendanceDate :formatDate(new Date(),'yyyy-MM-dd','en-us'),
-        students : this.classroomStudent,
-  
-      }
-      this.attendanceService.giveStudentAttendance(CourseId,data)
-                          .subscribe(res => {
-                            this.messageService.showToast('Attendance given Successfully','success')
+  todayDate;
+  value = new Date();
 
-                          })
-                          console.log(data);
-      
-    })
+  minDate = new Date(2000, 4, 10);
 
-    console.log(this.classroomStudent)
+  maxDate = new Date();
+
+  dateDisabled = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day === 0 || day === 6;
   }
 
-  classroomStudents(id,date){
-    this.attendanceService.getStudentAttendance(id,date).pipe(
-      map(res => res.map(item => {
-        item.Attendance = false;
-        return item;
-      }))
-    )
+  
+
+  constructor(
+    private attendanceService : AttendanceService,
+    private messageService : MessageService,
+    private activatedRoute : ActivatedRoute,
+    private classroomService : ClassroomService
+  ) {
+    this.todayDate = new Date();        
+  }
+
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params =>{
+      this.CourseId = params.get('id');
+      this.classroomStudents(this.todayDate);
+    })
+  }
+
+
+  giveAttendance(){
+      let data = {
+        attendanceDate :formatDate(this.todayDate,'yyyy-MM-dd','en-us'),
+        CourseId : this.CourseId,
+        students : this.classroomStudent,    
+  
+      }
+      console.log(data);
+
+      this.attendanceService.giveStudentAttendance(this.CourseId,data)
+      .subscribe(res => {
+        this.messageService.showToast('Attendance given Successfully','success')
+        this.classroomStudents(this.todayDate)
+
+      })
+  }
+
+  classroomStudents(date){
+
+    let formattedDate = formatDate(date,'yyyy-MM-dd','en-us');
+    
+    this.attendanceService.getStudentAttendance(this.CourseId, formattedDate)
     .subscribe(data =>{
       console.log(data);
       this.classroomStudent = data
     })
   }
-
-  constructor(private attendanceService : AttendanceService,
-              private messageService : MessageService,
-              private activatedRoute : ActivatedRoute,
-              private classroomService : ClassroomService) { }
-
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params =>{
-      let CourseId = params.get('id');
-      let date = formatDate(new Date(),'yyyy-MM-dd','en-us')
-      this.classroomStudents(CourseId,date);
-    
-    })
-
-  }
-  
-
 
 }

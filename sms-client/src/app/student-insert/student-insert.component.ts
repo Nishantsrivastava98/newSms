@@ -67,7 +67,7 @@ export class StudentInsertComponent implements OnInit {
       this.studentService.updateStudents(this.student.Id,this.student)
         .subscribe(res => {
           this.messageService.showToast('Student Updated Successfully', 'success');
-          this.router.navigateByUrl(`/library/details/${this.student.Id}`);
+          this.router.navigateByUrl(`/student/details/${this.student.Id}`);
           console.log('Response recieved: ', res);
           console.log(this.student.Id)
         });
@@ -76,7 +76,7 @@ export class StudentInsertComponent implements OnInit {
       this.studentService.addStudents(this.student)
         .subscribe(res => {
           this.messageService.showToast('Student Added Successfully', 'success');
-          this.router.navigateByUrl(`/library/details/${res.rows[1][0]["LAST_INSERT_ID()"]}`);
+          this.router.navigateByUrl(`/student/details/${res.rows[1][0]["LAST_INSERT_ID()"]}`);
 
         });
 
@@ -87,9 +87,17 @@ export class StudentInsertComponent implements OnInit {
   }
   optionsCourseName = [
 
-          {"label":'CSE', "value":'1'},
+          {"label":'ECE', "value":'1'},
 
-          {"label":'ME', "value":'2'}
+          {"label":'ME', "value":'2'},
+
+          {"label":'CSE', "value":'3'},
+
+          {"label":'EE', "value":'4'},
+
+          {"label":'CE', "value":'5'},
+
+          {"label":'IT', "value":'6'}
   ];
   selectionCourse: string = null;
 
@@ -98,7 +106,11 @@ export class StudentInsertComponent implements OnInit {
 
     {"label":'First Year', "value":'1'},
 
-    {"label":'Second Year', "value":'2'}
+    {"label":'Second Year', "value":'2'},
+
+    {"label":'Third Year', "value":'3'},
+
+    {"label":'Final Year', "value":'4'}
 ];
 selectionYear: string = null;
 
@@ -107,7 +119,19 @@ optionsSemester = [
 
   {"label":'First Semester', "value":'1'},
 
-  {"label":'Second Semester', "value":'2'}
+  {"label":'Second Semester', "value":'2'},
+
+  {"label":'Third Semester', "value":'3'},
+
+  {"label":'Fourth Semester', "value":'4'},
+
+  {"label":'Fifth Semester', "value":'5'},
+
+  {"label":'Sxth Semester', "value":'6'},
+
+  {"label":'Seventh Semester', "value":'7'},
+
+  {"label":'Last Semester', "value":'8'},
 ];
 selectionSemester: string = null;
 
