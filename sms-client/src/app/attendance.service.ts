@@ -17,6 +17,5 @@ export class AttendanceService {
     const url = `${this.attendanceUrl}/giveAttendance/${id}`
     return this.http.post(url,attendance)
   }
-
   constructor(private http : HttpClient) { }
 }

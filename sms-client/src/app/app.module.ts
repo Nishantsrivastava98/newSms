@@ -19,6 +19,8 @@ import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomStudentsComponent } from './classroom-students/classroom-students.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { TestComponent } from './test/test.component';
+import { TeachersComponent } from './teachers/teachers.component';
+import { SubjectsComponent } from './subjects/subjects.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TestComponent } from './test/test.component';
   ClassroomComponent,
   ClassroomStudentsComponent,
   AttendanceComponent,
-  TestComponent
+  TestComponent,
+  TeachersComponent,
+  SubjectsComponent
   ],
   imports: [
     BrowserModule,

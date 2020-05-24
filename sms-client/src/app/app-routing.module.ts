@@ -9,7 +9,8 @@ import { BookInsertComponent } from './book-insert/book-insert.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import{ ClassroomStudentsComponent } from './classroom-students/classroom-students.component';
 import { AttendanceComponent } from './attendance/attendance.component';
-
+import { TestComponent } from './test/test.component';
+import{ SubjectsComponent } from './subjects/subjects.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/students',pathMatch:'full'},
@@ -23,7 +24,9 @@ const routes: Routes = [
   {path :'library/add',component:BookInsertComponent},
   {path : 'classroom',component:ClassroomComponent},
   {path : 'classroom/student/:id',component:ClassroomStudentsComponent},
-  {path : 'classroom/attendance/:id',component:AttendanceComponent}
+  {path : 'classroom/attendance/:id',component:AttendanceComponent},
+  {path : 'subjects',component:SubjectsComponent},
+  {path : 'test',component:TestComponent}
 
 ];
 

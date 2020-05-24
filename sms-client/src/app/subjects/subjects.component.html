@@ -1,0 +1,59 @@
+
+  
+<article class="slds-card slds-m-around_medium">
+	<div class="slds-card__header slds-grid">
+	  <header class="slds-media slds-media_center slds-has-flexi-truncate">
+		<div class="slds-media__figure">
+		  <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+			<svg class="slds-icon slds-icon_small" aria-hidden="true">
+			  <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+			</svg>
+			<span class="slds-assistive-text">contact</span>
+		  </span>
+		</div>
+		<div class="slds-media__body">
+		  <h2 class="slds-card__header-title">
+				<span>Students list</span>
+		  </h2>
+		</div>
+		<div class="slds-no-flex">
+		  <button class="slds-button slds-button_neutral" [routerLink]= "['/student/add']">New</button>
+		</div>
+	  </header>
+	</div>
+	 <div class="slds-card__body">
+		<table class="slds-table_bordered slds-max-medium-table_stacked-horizontal" ngl-datatable [data]="subjects" trackByKey="key" >
+            <ngl-datatable-column heading="Subject Id" key="SubjectId" sortable></ngl-datatable-column>
+            <ngl-datatable-column heading="Action" aria-keyshortcuts="Id"  >
+			<ng-template nglDatatableCell let-row='row' >
+                <span class="slds-truncate">
+					<div *ngIf="row.isEditable">
+						<input ngl type="input" placeholder="Subject Name" [(ngModel)]="row.SubjectName">
+					</div>
+					<div *ngIf="!row.isEditable">
+						{{row.SubjectName}}
+					</div>
+					
+				</span>
+            </ng-template>
+        </ngl-datatable-column>
+			<ngl-datatable-column heading="Action" aria-keyshortcuts="Id"  >
+				<ng-template nglDatatableCell let-row='row' >
+					<div *ngIf="row.isEditable">
+						<button type="button" variant="brand" nglButton>Save</button>
+						<button type="button" nglButton (click)="row.isEditable = false">Cancel</button>
+					</div>
+					<div *ngIf="!row.isEditable">
+						<button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left" (click)="row.isEditable = true">Edit</button>
+						<button type="button" nglButton variant="destructive" iconName="action:delete" iconPosition="right" (click)="deleteSubjects(row.SubjectId)">Delete</button>
+					</div>
+                </ng-template>
+                
+			</ngl-datatable-column>
+		</table>
+	</div>
+	<footer class="slds-card__footer">
+	</footer>
+</article>
+
+
