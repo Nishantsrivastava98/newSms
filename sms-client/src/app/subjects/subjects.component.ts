@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubjectsService } from '../subjects.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from '../message.service';
-
-
 
 
 @Component({
@@ -13,9 +11,14 @@ import { MessageService } from '../message.service';
 })
 export class SubjectsComponent implements OnInit {
   subjects;
-  subjectsOld = new Map();
+  subjects1={
+    "SubjectId":"",
+    "SubjectName":""
+  };
+  isAdded = false;
+  subjectsOld = new Map(this.subjects);
   constructor(private subjectService : SubjectsService,
-              private activatedRoute : ActivatedRoute,
+              private router : Router,
               private messageService : MessageService) { }
 
   ngOnInit(): void {
@@ -29,25 +32,44 @@ export class SubjectsComponent implements OnInit {
       });
     
   }
-  updateSubjects(id){
+  updateSubjects(row){
+    let SubjectName ={
+      
+      "SubjectName":row.SubjectName
+    }
     
-    this.subjectService.updateSubjects(id,this.subjects)
+    this.subjectService.updateSubjects(row.SubjectId,SubjectName)
       .subscribe(res =>{
         this.messageService.showToast('Subject Updated Successfully', 'success');
+        row.isEditable = false;
       });
     
   }
   deleteSubjects(id){
     
     this.subjectService.deleteSubjects(id).subscribe(res =>{
-      this.messageService.showToast('Student deleted Successfully', 'error');
+      let index = this.subjects.findIndex(function(item){
+        return item.Id == id;
+    });
+    this.subjects.splice(index,1)
+      this.messageService.showToast('Subject deleted Successfully', 'error');
     })
   }
   addSubjects(){
-    this.subjectService.getSubjects().subscribe(dataFromServer => {
+    this.subjectService.addSubjects(this.subjects1).subscribe(res => {
       this.messageService.showToast('Student Added Successfully', 'success');
-      this.subjects = dataFromServer;
+      this.router.navigateByUrl(`/subjects`);
+      
     })
   }
+  onEdit(id,subjectName){
+    this.subjectsOld.set(id,subjectName)
+    console.log(this.subjectsOld)
+  }
+  onCancel(row){
+    row.SubjectName = this.subjectsOld.get(row.SubjectId);
+
+  }
+  
 
 }

@@ -15,6 +15,10 @@ export class TeachersService {
   getTeachers(): Observable<any> {
     return this.http.get(this.teachersUrl)
   }
+  teacherDetail(id) : Observable<any>{
+    const url = `${this.teachersUrl}/detail/${id}`
+    return this.http.get(url)
+  }
 
   deleteTeachers(id : number) : Observable<any>{
    
@@ -26,4 +30,9 @@ export class TeachersService {
     const url =  `${this.teachersUrl}/addTeachers`;
     return this.http.post(url,teachers,this.httpOptions)
   }
+
+  updateTeacher(id,teachers) : Observable<any>{
+    const url =  `${this.teachersUrl}/update/${id}`;
+    return this.http.put(url,teachers,this.httpOptions)
+  } 
 }

@@ -1,0 +1,67 @@
+<article class="slds-card " style="max-width: 400px; margin:auto; margin-top: 50px;" >
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate" *ngIf="isEdit">
+        <div  class="slds-media__figure">
+          <ngl-icon  iconName="action:edit" alternativeText="edit" size = "xx-small"></ngl-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+              <span>Edit</span>
+          </h2>
+        </div>
+      </header>
+      <header class="slds-media slds-media_center slds-has-flexi-truncate" *ngIf="!isEdit">
+        <div  class="slds-media__figure">
+          <ngl-icon  iconName="action:edit" alternativeText="edit" size = "xx-small"></ngl-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+              <span>Add</span>
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body slds-p-around_small">
+     <form #teacherForm = "ngForm"> 
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <ngl-input label="TeacherName" fieldLevelHelpTooltip="This is a required Field" 
+                [error]="TeacherName.invalid && TeacherName.touched ? 
+                (degree.errors.required ? 'This field is required' :''): null ">
+                <input ngl type="input" [required]="required" required [disabled]="disabled" 
+                  [(ngModel)]="teachers.TeacherName" placeholder="Enter Your Name" name="TeacherName"  
+                  #TeacherName="ngModel">
+              </ngl-input>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <div class="slds-form-element__control"> 
+              <ngl-input label="Degree" fieldLevelHelpTooltip="This is a required Field" 
+                [error]="degree.invalid && degree.touched ? 
+                (degree.errors.required ? 'This field is required' :''): null ">
+                <input ngl type="input" [required]="required" required [disabled]="disabled" 
+                  [(ngModel)]="teachers.Degree" placeholder ="Enter Your Degree" name="teachers.Degree"  
+                  #degree="ngModel">
+              </ngl-input>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+              <ngl-input label="Experiance" fieldLevelHelpTooltip="This is a required Field"
+               [error]="TeachingExperiance.invalid && TeachingExperiance.touched ? 
+               (TeachingExperiance.errors.required ?'This field is required' :''): null ">
+                <input ngl type="input" [required]="required" required [disabled]="disabled"
+                 [(ngModel)]="teachers.TeachingExperiance" name="TeachingExperiance" placeholder="Enter Your Experiance" #TeachingExperiance="ngModel">
+              </ngl-input>
+            </div>
+        </div>
+
+        <div class="slds-text-align_center">
+            <button *ngIf="isEdit" [disabled]="teacherForm.invalid" type="button" nglButton variant="success" nglButton (click)="showTopToast = true" (click)="Teachers()" class="slds-m-top_medium" >Update</button>
+            <button *ngIf="!isEdit"[disabled]="teacherForm.invalid" type="button" nglButton variant="success" nglButton (click)="showTopToast = true" (click)="Teachers()" class="slds-m-top_medium " >Add</button>
+        
+          </div>
+
+    </form>
+</div>
+</article>

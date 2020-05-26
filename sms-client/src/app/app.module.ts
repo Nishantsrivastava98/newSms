@@ -21,6 +21,8 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { TestComponent } from './test/test.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { SubjectsComponent } from './subjects/subjects.component';
+import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { TeacherDetailsComponent } from './teacher-details/teacher-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { SubjectsComponent } from './subjects/subjects.component';
   AttendanceComponent,
   TestComponent,
   TeachersComponent,
-  SubjectsComponent
+  SubjectsComponent,
+  AddTeacherComponent,
+  TeacherDetailsComponent
   ],
   imports: [
     BrowserModule,

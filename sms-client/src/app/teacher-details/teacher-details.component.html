@@ -1,0 +1,102 @@
+<div *ngIf = "teacher" >
+    <article class="slds-card slds-m-around_medium" >
+      <div class="slds-card__header slds-grid">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+          <svg class="slds-icon slds-icon_small" aria-hidden="true">
+            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+          </svg>
+          <span class="slds-assistive-text">Details</span>
+          </span>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+          <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Card Header">
+            <span>Details</span>
+          </a>
+          </h2>
+        </div>
+        <div class="slds-no-flex">
+          <a type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left" routerLink= "/teacher/update/{{teacher.TeacherId}}" >Edit</a>
+        </div>
+        </header>
+      </div>
+      <div class="slds-card__body">
+        <div *ngIf="teacher">
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" style="font-size: medium;">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Fields">Fields</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Details">Details</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr class="slds-hint-parent">
+                    <td data-label="Fields">
+                      <div class="slds-truncate" title="Id">Teacher Id</div>
+                    </td>
+                    <td data-label="Detail">
+                      <div class="slds-truncate" title="{{teacher.TeacherId}}">{{teacher.TeacherId}}</div>
+                    </td>
+                  
+                  </tr>
+              <tr class="slds-hint-parent">
+                <td data-label="Fields">
+                  <div class="slds-truncate" title="Name">Name</div>
+                </td>
+                <td data-label="Detail">
+                  <div class="slds-truncate" title="{{teacher.TeacherName}}">{{teacher.TeacherName}}</div>
+                </td>
+              
+              </tr>
+              
+              <tr class="slds-hint-parent">
+                <td data-label="Fields">
+                  <div class="slds-truncate" title="Degree">Degree</div>
+                </td>
+                <td data-label="Detail">
+                  <div class="slds-truncate" title="{{teacher.Degree}}">{{teacher.Degree}}</div>
+                </td>
+              
+              </tr>
+              <tr class="slds-hint-parent">
+                <td data-label="Fields">
+                  <div class="slds-truncate" title="Experiance">Exeriance</div>
+                </td>
+                <td data-label="Detail">
+                  <div class="slds-truncate" title="{{teacher.TeachingExperiance}}">{{teacher.TeachingExperiance}}</div>
+                </td>
+              
+              </tr>
+              <tr class="slds-hint-parent">
+                <td data-label="Fields">
+                  <div class="slds-truncate" title="Date Of Joining">Date Of Joining</div>
+                </td>
+                <td data-label="Detail">
+                  <div class="slds-truncate" title="{{teacher.CreatedDate}}">{{teacher.CreatedDate}}</div>
+                </td>
+              
+              </tr>
+              
+             
+              
+          
+            </tbody>
+          </table>
+          <div class="slds-text-align_center">
+            <button type="button" nglButton variant="success" iconName="action:check" class="slds-m-top_small " routerLink="/teachers">Done</button>
+          </div>  
+      </div>
+        <div *ngIf="!teacher">
+            Fetching details..
+        </div>
+      </div>
+    </article>
+  </div>
+  
+  

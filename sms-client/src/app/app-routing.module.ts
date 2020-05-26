@@ -11,6 +11,9 @@ import{ ClassroomStudentsComponent } from './classroom-students/classroom-studen
 import { AttendanceComponent } from './attendance/attendance.component';
 import { TestComponent } from './test/test.component';
 import{ SubjectsComponent } from './subjects/subjects.component';
+import { TeachersComponent } from './teachers/teachers.component';
+import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { TeacherDetailsComponent } from './teacher-details/teacher-details.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/students',pathMatch:'full'},
@@ -26,7 +29,11 @@ const routes: Routes = [
   {path : 'classroom/student/:id',component:ClassroomStudentsComponent},
   {path : 'classroom/attendance/:id',component:AttendanceComponent},
   {path : 'subjects',component:SubjectsComponent},
-  {path : 'test',component:TestComponent}
+  {path : 'teachers',component:TeachersComponent},
+  {path : 'teachers/add',component : AddTeacherComponent},
+  {path : 'teachers/update/:id',component : AddTeacherComponent},
+  {path : 'test',component:TestComponent},
+  {path : 'teacher/details/:id',component:TeacherDetailsComponent}
 
 ];
 

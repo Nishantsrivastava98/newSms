@@ -13,11 +13,20 @@
 		</div>
 		<div class="slds-media__body">
 		  <h2 class="slds-card__header-title">
-				<span>Students list</span>
+				<span>Subjects list</span>
 		  </h2>
 		</div>
 		<div class="slds-no-flex">
-		  <button class="slds-button slds-button_neutral" [routerLink]= "['/student/add']">New</button>
+			<div *ngIf="!isAdded">
+		  <button class="slds-button slds-button_neutral" (click)="isAdded=true">New</button>
+		  </div>
+		  <div *ngIf="isAdded">
+			<form>
+				<input ngl type="input" placeholder="Subject Name" [(ngModel)]="subjects1.SubjectName" name="SubjectName" >
+				<button type="button" variant="brand" nglButton (click)="addSubjects()">Save</button>
+		    </form>
+
+		  </div>
 		</div>
 	  </header>
 	</div>
@@ -40,11 +49,11 @@
 			<ngl-datatable-column heading="Action" aria-keyshortcuts="Id"  >
 				<ng-template nglDatatableCell let-row='row' >
 					<div *ngIf="row.isEditable">
-						<button type="button" variant="brand" nglButton>Save</button>
-						<button type="button" nglButton (click)="row.isEditable = false">Cancel</button>
+						<button type="button" variant="brand" nglButton (click)="updateSubjects(row)">Save</button>
+						<button type="button" nglButton (click)="row.isEditable = false ; onCancel(row)">Cancel</button>
 					</div>
 					<div *ngIf="!row.isEditable">
-						<button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left" (click)="row.isEditable = true">Edit</button>
+						<button type="button" nglButton variant="brand" iconName="utility:edit" iconPosition="left" (click)="row.isEditable = true ; onEdit(row.SubjectId,row.SubjectName)">Edit</button>
 						<button type="button" nglButton variant="destructive" iconName="action:delete" iconPosition="right" (click)="deleteSubjects(row.SubjectId)">Delete</button>
 					</div>
                 </ng-template>
