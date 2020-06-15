@@ -88,4 +88,19 @@ router.delete('/delete/:id',function(req, res, next){
 		}
 	})
 })
+router.get('/search/:query',function(req,res,next){
+    var q = `SELECT * FROM teachers WHERE TeacherName LIKE '%${req.params.query}%' OR TeacherId LIKE '%${req.params.query}%' `
+    console.log(q);
+    database.query(q, function(err,rows,fields){
+		if (err) {
+			Promise.resolve().then(function () { 
+				throw err;
+			}).catch(next)
+		}
+		else{
+			res.send(rows);
+		}
+		
+	})
+})
 module.exports = router;

@@ -14,6 +14,8 @@ import{ SubjectsComponent } from './subjects/subjects.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { TeacherDetailsComponent } from './teacher-details/teacher-details.component';
+import { TeacherConfigurationComponent } from './teacher-configuration/teacher-configuration.component';
+import { ConfigureTeacherComponent } from './configure-teacher/configure-teacher.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/students',pathMatch:'full'},
@@ -33,7 +35,9 @@ const routes: Routes = [
   {path : 'teachers/add',component : AddTeacherComponent},
   {path : 'teachers/update/:id',component : AddTeacherComponent},
   {path : 'test',component:TestComponent},
-  {path : 'teacher/details/:id',component:TeacherDetailsComponent}
+  {path : 'teacher/details/:id',component:TeacherDetailsComponent},
+  {path : 'teacherconfiguration',component:TeacherConfigurationComponent},
+  {path : 'configureTeacher',component:ConfigureTeacherComponent}
 
 ];
 

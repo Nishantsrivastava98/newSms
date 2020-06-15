@@ -13,10 +13,14 @@ export class LibraryAdministrationComponent implements OnInit {
   ngOnInit(): void {
     this.getBooks();
   }
+
   getBooks(){
     this.libraryService.getBooks()
-                         .subscribe(booksFromServer => this.data = booksFromServer);
+                         .subscribe(booksFromServer => {
+                           console.log(booksFromServer)
+                           return this.data = booksFromServer});
   }
+  
   deleteBooks(id):void {
     this.libraryService.deleteBooks(id).subscribe(()=>{
       let index = this.data.findIndex(function(item){

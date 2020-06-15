@@ -1,0 +1,71 @@
+
+<article class="slds-card slds-m-around_medium">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        
+        <div class="slds-media__figure">
+          <span class="slds-icon_container slds-icon-standard-account" title="account">
+            <svg class="slds-icon slds-icon_small" aria-hidden="true">
+              <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+            </svg>
+            <span class="slds-assistive-text">account</span>
+          </span>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+     
+              <span>Library Card</span>
+          </h2>
+        </div>
+      </header>
+      <div class="slds-no-flex">
+        <app-search-book (onBookSelection)="bookSelectionHandler($event)"></app-search-book>      </div>
+    </div>
+    
+  
+          
+    <div class="slds-card__body slds-card__body_inner">
+      <div *ngFor="let item of books">
+      <article class="slds-card slds-m-around_medium slds-card_boundary">
+  
+        
+        <div class="slds-card__body ">
+  
+          <div class="slds-grid slds-wrap slds-p-around_small" >
+            <div class=" slds-col slds-size_1-of-12 ">
+              
+                <b> <span>{{item.BookId}}</span></b>
+  
+        </div>
+        <div class=" slds-col slds-size_3-of-12 slds-text-heading_small ">
+          <span><b>Book Name-:</b>{{item.BookName|uppercase}}</span>
+        </div>
+        <div class=" slds-col slds-size_2-of-12 slds-text-heading_small ">
+           <span><b>Author-:</b>{{item.Author|uppercase}}</span>
+         </div>
+         <div class=" slds-col slds-size_3-of-12 slds-text-heading_small ">
+           <span><b>Issue Date-:</b>{{item.IssuedDate|date}}</span>
+         </div>
+         <div class=" slds-col slds-size_3-of-12 slds-text-heading_small">
+           <div>
+             <div *ngIf="item.ReturnDate">
+              <b>Return Date-:</b>{{item.ReturnDate|date}}
+             </div>
+           <div *ngIf="!item.ReturnDate">
+            <a type="button" nglButton variant="outline-brand" (click)="returnBook(item.IssueId)" >Return</a>
+          </div>
+        </div>
+         </div>
+          </div>
+        </div>
+        <footer class="slds-card__footer"></footer>
+      </article>
+    </div>
+      
+    </div>
+    
+    <footer class="slds-card__footer">
+    </footer>
+  
+  </article>
+  

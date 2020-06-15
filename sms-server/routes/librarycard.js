@@ -17,6 +17,26 @@ router.put('/update/:id',function(req, res, next){
                 }
         })
 })
+
+
+router.get('/:id',function(req,res,next){
+
+    var q = `SELECT count(*) FROM librarycard 
+    WHERE BookId = ${req.params.id} and ReturnDate IS NULL`
+    console.log(q);
+    database.query(q,function(err,rows){
+        console.log(err)
+        if(err){
+            Promise.resolve().then(function(){
+                throw err
+            }).catch(next)
+        }
+        else{
+            res.send(rows)
+        }
+    })
+})
+
 router.post('/insert',function(req, res, next){
     var q = `INSERT into librarycard (StudentId,BookId)
             VALUES (${req.body.StudentId},${req.body.BookId});

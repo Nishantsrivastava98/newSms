@@ -19,6 +19,10 @@ export class LibrarycardService {
     const url = `${this.librarycardUrl}/insert`;
     return this.httpClient.post(url,librarycard,this.httpOptions)
   }
+  bookAvailablity(id): Observable<any>{
+    const url = `${this.librarycardUrl}/${id}`;
+    return this.httpClient.get(url)
+  }
 
   updateLibraryCard(id,librarycard): Observable<any>{
     const url = `${this.librarycardUrl}/update/${id}`;

@@ -1,2 +1,16 @@
-<router-outlet></router-outlet>
+<header class="header">
+  <a href="" class="logo">SCHOOL MANAGEMENT</a>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a [routerLink]="['/students']" >Students</a></li>
+    <li><a [routerLink]="['/teachers']" routerLinkActive="router-link-active" >Teachers</a></li>
+    <li><a [routerLink]="['/classroom']">classroom</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+<div  style="margin-top: 70px;">
+<router-outlet ></router-outlet>
+</div>
+
 <app-message></app-message>

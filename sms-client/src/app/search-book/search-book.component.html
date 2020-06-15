@@ -1,9 +1,5 @@
-<ngl-combobox label="Search your book here" [options]="searchedBooks | async" [open]="open" (openChange)="openChange($event)" (selectionChange)="fireShowBook($event)" [(selection)]="selectedBookId" [loading]="Loading" variant="lookup">
-    <input nglCombobox type="text" placeholder="Please type something..." [formControl]="inputCtrl">
+<ngl-combobox re [options]="searchedBooks | async" [open]="open" (openChange)="openChange($event)" (selectionChange)="fireShowBook($event)" [(selection)]="selectedBookId" [loading]="Loading" variant="lookup">
+    <input nglCombobox type="text" placeholder="Issue Book" [formControl]="inputCtrl">
 </ngl-combobox>
 
-<div class="slds-m-top_x-small" *ngIf="selectedBookId" >
-  You selected:
-  <strong>{{ selectedBookId }}</strong>
-  
-</div>
+

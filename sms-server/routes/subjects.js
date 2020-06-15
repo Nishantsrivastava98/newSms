@@ -17,8 +17,8 @@ router.get('/',function(req,res,next){
             res.send(rows)
         }
     })
-
 })
+
 router.post('/addSubjects',function(req,res,next){
 
     var q = `INSERT into subjects (SubjectName) VALUES ('${req.body.SubjectName}')`
@@ -64,6 +64,21 @@ router.delete('/delete/:id',function(req, res, next){
 		else{
 			res.send({'rows':rows,'fields':fields});
 		}
+	})
+})
+router.get('/search/:query',function(req,res,next){
+    var q = `SELECT * FROM subjects WHERE SubjectName LIKE '%${req.params.query}%' `
+    console.log(q);
+    database.query(q, function(err,rows,fields){
+		if (err) {
+			Promise.resolve().then(function () {
+				throw err;
+			}).catch(next)
+		}
+		else{
+			res.send(rows);
+		}
+		
 	})
 })
 module.exports = router;

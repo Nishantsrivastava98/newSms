@@ -1,3 +1,4 @@
+<app-back-button></app-back-button>
 <div *ngIf = "teacher" >
     <article class="slds-card slds-m-around_medium" >
       <div class="slds-card__header slds-grid">
@@ -88,9 +89,7 @@
           
             </tbody>
           </table>
-          <div class="slds-text-align_center">
-            <button type="button" nglButton variant="success" iconName="action:check" class="slds-m-top_small " routerLink="/teachers">Done</button>
-          </div>  
+           
       </div>
         <div *ngIf="!teacher">
             Fetching details..

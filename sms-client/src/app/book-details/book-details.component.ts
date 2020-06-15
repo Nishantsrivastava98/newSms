@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LibraryService } from '../library.service';
 import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class BookDetailsComponent implements OnInit {
 
 
   constructor(private libraryService : LibraryService,
-              private activatedRoute : ActivatedRoute) { }
+              private activatedRoute : ActivatedRoute,
+              private location : Location) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params =>{
@@ -24,6 +26,9 @@ export class BookDetailsComponent implements OnInit {
   }
   bookDetails(id){this.libraryService.bookDetails(id)
     .subscribe(arg => this.books = arg);
+  }
+  back(){
+    this.location.back();
   }
   
   }

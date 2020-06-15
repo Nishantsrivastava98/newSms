@@ -95,7 +95,7 @@ router.get('/books/:id',function(req,res,next){
 	FROM librarycard
 	LEFT JOIN library
 	ON librarycard.BookId = library.BookId 
-	WHERE librarycard.StudentId = '${req.params.id}';s`
+	WHERE librarycard.StudentId = '${req.params.id}';`
 	console.log(q);
 	database.query(q,function(err,rows,fields){
 		if(err){

@@ -23,6 +23,10 @@ import { TeachersComponent } from './teachers/teachers.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { TeacherDetailsComponent } from './teacher-details/teacher-details.component';
+import { TeacherConfigurationComponent } from './teacher-configuration/teacher-configuration.component';
+import { ConfigureTeacherComponent } from './configure-teacher/configure-teacher.component';
+import { BackButtonComponent } from './back-button/back-button.component';
+import { LibrarycardComponent } from './librarycard/librarycard.component';
 
 @NgModule({
   declarations: [
@@ -32,18 +36,22 @@ import { TeacherDetailsComponent } from './teacher-details/teacher-details.compo
     StudentInsertComponent,
     StudentDetailsComponent,
     MessageComponent,
-  LibraryAdministrationComponent,
-  BookDetailsComponent,
-  BookInsertComponent,
-  SearchBookComponent,
-  ClassroomComponent,
-  ClassroomStudentsComponent,
-  AttendanceComponent,
-  TestComponent,
-  TeachersComponent,
-  SubjectsComponent,
-  AddTeacherComponent,
-  TeacherDetailsComponent
+    LibraryAdministrationComponent,
+    BookDetailsComponent,
+    BookInsertComponent,
+    SearchBookComponent,
+    ClassroomComponent,
+    ClassroomStudentsComponent,
+    ConfigureTeacherComponent,
+    AttendanceComponent,
+    TestComponent,
+    TeachersComponent,
+    SubjectsComponent,
+    AddTeacherComponent,
+    TeacherDetailsComponent,
+    TeacherConfigurationComponent,
+    BackButtonComponent,
+    LibrarycardComponent
   ],
   imports: [
     BrowserModule,

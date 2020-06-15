@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { LibraryService } from '../library.service';
 import { Output, EventEmitter } from '@angular/core'
 import { map, switchMap, tap, debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
-const PARAMS = new HttpParams({
-  fromObject: {
-    action: 'opensearch',
-    format: 'json',
-    origin: '*'
-  }
-});
+
 
 @Component({
   selector: 'app-search-book',
@@ -25,12 +18,14 @@ export class SearchBookComponent implements OnInit {
   selectedBookId;
   searchedBooks :Observable<any[]>;
   inputCtrl = new FormControl();
+  booksMap;
 
   @Output() onBookSelection = new EventEmitter();
+  selectedBook: any;
 
 
 
-  constructor(private http : HttpClient,
+  constructor(
               private libraryService : LibraryService
   ) {
 
@@ -47,8 +42,15 @@ export class SearchBookComponent implements OnInit {
         }
         else{
           return this.libraryService.searchBook(term).pipe(
+            tap((response) => {
+              this.booksMap = new Map();
+              response.forEach(element => {
+                this.booksMap.set(element.BookId, element);
+              });
+            }),
             map((response:any[]) => response.map((item) => {
-              return {value: item.BookId, label: item.BookName + ' - ' + item.Author }
+             
+              return {value: item.BookId, label: item.BookName + ' - ' + item.Author, count:item.NumberOfBooks  }
             }))
           );
         }
@@ -68,7 +70,7 @@ export class SearchBookComponent implements OnInit {
   }
   fireShowBook(event){ 
     if(event){
-      this.onBookSelection.emit(event);
+      this.onBookSelection.emit(this.booksMap.get(event));
     }
 
   }

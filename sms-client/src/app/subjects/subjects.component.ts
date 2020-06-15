@@ -58,7 +58,7 @@ export class SubjectsComponent implements OnInit {
   addSubjects(){
     this.subjectService.addSubjects(this.subjects1).subscribe(res => {
       this.messageService.showToast('Student Added Successfully', 'success');
-      this.router.navigateByUrl(`/subjects`);
+      
       
     })
   }

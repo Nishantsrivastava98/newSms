@@ -1,0 +1,16 @@
+<ngl-modal header='Choose Teacher and Subject' [open]="isOpen" (openChange)="isOpenChange.emit(false)" >
+  
+  <div class="slds-p-around_medium">
+    <ngl-combobox label="Teacher" [options]="selectedTeacher | async" [open]="open" (openChange)="openChangeTeacher($event)" [(selection)]="TeacherId" [loading]="LoadingTeacher" variant="lookup">
+        <input nglCombobox type="text" placeholder="Please type something..." [formControl]="inputctrlTeacher">
+    </ngl-combobox>
+    
+    <ngl-combobox label="Subject" [options]="selectedSubject| async" [open]="openSubject" (openChange)="openChangeSubject($event)" [(selection)]="SubjectId" [loading]="LoadingSubject" variant="lookup">
+        <input nglCombobox type="text" placeholder="Please type something..." [formControl]="inputctrlSubject">
+    </ngl-combobox>
+  </div>
+  <ng-template nglModalFooter >
+    <button class="slds-button slds-button_neutral" (click)="isOpenChange.emit(false)">Cancel</button>
+    <button class="slds-button slds-button_brand" (click)="allot()">Save</button>
+  </ng-template>
+</ngl-modal>
