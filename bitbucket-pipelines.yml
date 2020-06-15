@@ -17,14 +17,14 @@ pipelines:
     - step:
         name: build-server
         script:
-          - cd..
+          - cd ..
           - cd sms-server
           - npm install
     - step:
         name: serve-application
         script: 
           - cd sms-server
-          - node index.js
+          - nodemon index.js
     - step:
         name: deploy-to-heroku
         deployment: production
