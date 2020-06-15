@@ -23,7 +23,7 @@ pipelines:
         name: serve-application
         script: 
           - cd sms-server
-          - nodemon index.js
+          - node index.js
     - step:
         name: deploy-to-heroku
         deployment: production
