@@ -17,6 +17,7 @@ pipelines:
     - step:
         name: build-server
         script:
+          - cd..
           - cd sms-server
           - npm install
     - step:
