@@ -13,7 +13,7 @@ pipelines:
         script:
           - cd sms-client
           - npm install
-          - ng build
+          - npm build
     - step:
         name: build-server
         script:
