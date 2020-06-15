@@ -9,21 +9,18 @@ clone:
 pipelines:
   default:
     - step:
+          name: build-server
+          script:
+            - pwd
+            - ls
+            - cd sms-server
+            - npm install
+    - step:
         name: build-client
         script:
           - cd sms-client
           - npm install
           - npm run-script build
-    - step:
-        name: build-server
-        script:
-          - pwd
-          - ls
-          - cd ..
-          - pwd
-          - ls
-          - cd sms-server
-          - npm install
     - step:
         name: serve-application
         script: 
