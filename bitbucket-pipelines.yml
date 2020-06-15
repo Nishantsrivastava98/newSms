@@ -11,6 +11,8 @@ pipelines:
             name: create-archive
             script:
               - git archive --format=tar.gz master -o sms.tar.gz
+            artifacts:
+              - sms/sms.tar.gz
 
     - step:
         caches:
@@ -20,7 +22,7 @@ pipelines:
             variables:
               HEROKU_API_KEY: $HEROKU_API_KEY
               HEROKU_APP_NAME: $HEROKU_APP_NAME
-              ZIP_FILE: sms.tar.gz
+              ZIP_FILE: sms/sms.tar.gz
               # WAIT: '<boolean>' # Optional.
               # DEBUG: '<boolean>' # Optional
 
