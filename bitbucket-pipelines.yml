@@ -19,7 +19,7 @@ pipelines:
     - step:
         name: create-zip
         script:
-          - tar czfv application.tgz /sms-server
+          - tar czfv application.tgz sms-server
         artifacts:
           - application.tgz
 
