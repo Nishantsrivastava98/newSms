@@ -4,35 +4,33 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: node:10.15.3
-clone:
-  depth: full
 pipelines:
-  default:
-    - step:
-          name: build-server
+  branches:
+    master:
+      - step:
+          name: 'Build app'
+          caches:
+            - node
           script:
-            - pwd
-            - ls
-            - cd sms-server
-            - npm install
-    - step:
-        name: build-client
-        script:
-          - cd sms-client
-          - npm install
-          - npm run-script build
-    - step:
-        name: serve-application
-        script: 
-          - cd sms-server
-          - nodemon index.js
-    - step:
-        name: deploy-to-heroku
-        deployment: production
-        caches:
-          - node
-        script: 
-          - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
+            - npm install --quiet
+            - npm run build --progress=false
+          artifacts:
+            - dist/**
+      - step:
+          name: 'Create zip'
+          script:
+            - tar czfv application.tgz dist -C server .
+          artifacts:
+            - application.tgz
+      - step:
+          name: 'Deploy to Heroku in production'
+          deployment: production
+          script:
+            - pipe: atlassian/heroku-deploy:0.1.1
+              variables:
+                HEROKU_API_KEY: $HEROKU_API_KEY
+                HEROKU_APP_NAME: $HEROKU_APP_NAME
+                ZIP_FILE: "application.tgz"
 
 
 
