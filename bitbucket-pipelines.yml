@@ -9,18 +9,11 @@ clone:
 pipelines:
   default:
     - step:
-          name: build-server
+          name: build
           script:
-            - pwd
-            - ls
-            - cd sms-server
+            - cd sms-client 
             - npm install
-    - step:
-        name: build-client
-        script:
-          - cd sms-client
-          - npm install
-          - npm run-script build
+            - npm run-script build --prod
     - step:
         name: deploy-to-heroku
         deployment: production
