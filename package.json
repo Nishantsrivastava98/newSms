@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "cd sms-client && npm install && npm run-script build && cd .. && cd sms-server && npm install",
+    "start": "node sms-server/index.js"
+  },
+  "name": "sms",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
