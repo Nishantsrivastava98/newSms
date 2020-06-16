@@ -12,8 +12,9 @@ pipelines:
           caches:
             - node
           script:
-            - npm install
-            - npm run build 
+             - cd sms-client
+             - npm install
+             - npm run-script build
           artifacts:
             - dist/**
       - step:
