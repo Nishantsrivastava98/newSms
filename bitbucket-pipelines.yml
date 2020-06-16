@@ -14,14 +14,25 @@ pipelines:
             - cd sms-client 
             - npm install
             - npm run-script build --prod
+          artifacts:
+            - app/**
     - step:
-        name: deploy-to-heroku
-        deployment: production
-        caches:
-          - node
-        script: 
-          - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
+        name: create-zip
+        script:
+          - tar czfv application.tgz /sms-server
+        artifacts:
+          - application.tgz
 
+
+    - step:
+          name: 'Deploy to Heroku in production'
+          deployment: production
+          script:
+            - pipe: atlassian/heroku-deploy:0.1.1
+              variables:
+                HEROKU_API_KEY: $HEROKU_API_KEY
+                HEROKU_APP_NAME: $HEROKU_APP_NAME
+                ZIP_FILE: "application.tgz"
 
 
 
