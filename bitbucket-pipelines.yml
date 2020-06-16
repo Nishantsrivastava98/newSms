@@ -12,8 +12,8 @@ pipelines:
           caches:
             - node
           script:
-            - npm install --quiet
-            - npm run build --progress=false
+            - npm install
+            - npm run build 
           artifacts:
             - dist/**
       - step:
